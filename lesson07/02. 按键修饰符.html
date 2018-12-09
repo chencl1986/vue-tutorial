@@ -13,26 +13,24 @@
 
 <body>
   <div id="app">
-    <div v-on:click="fn1()">
-      <form action="" v-on:submit.prevent="submit()">
-        <input type="submit" value="按钮" v-on:click.prevent.stop.once="fn2()">
-      </form>
+    <div>
+      <!-- 按下回车键时弹窗，也可以写成v-on:keydown.13 -->
+      <input type="text" v-on:keydown.enter="fn1()">
+      <!-- 按键修饰符也支持组合 -->
+      <input type="text" v-on:keydown.ctrl.enter="fn2()">
     </div>
   </div>
   <script src="../vue.js"></script>
   <script>
     let vm = new Vue({
-      el: '#app', // 根元素或挂载点。
+      el: '#app',
       data: {},
       methods: {
         fn1() {
-          alert('fn1')
+          alert('回车')
         },
         fn2() {
-          alert('fn2')
-        },
-        submit() {
-          alert('submit')
+          alert('ctrl+回车')
         },
       }
     })
