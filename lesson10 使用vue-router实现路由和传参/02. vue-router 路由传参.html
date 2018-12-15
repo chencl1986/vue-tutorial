@@ -10,6 +10,7 @@
     .nav {
       color: #faa;
     }
+
     .router-link-active {
       color: blue;
     }
@@ -18,7 +19,7 @@
 
 <body>
   <div id="app">
-    跳转按钮，通过path跳转<br/>
+    跳转按钮，通过path跳转<br />
     <router-link class="nav" to="/index">index</router-link>
     <router-link class="nav" to="/news/123">news</router-link>
     <router-link class="nav" to="/user?userId=666">user</router-link><br />
@@ -63,7 +64,7 @@
     let vm = new Vue({
       el: '#app',
       data: {
-        
+
       },
       // 将路由添加到Vue中
       router
