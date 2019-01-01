@@ -8,7 +8,7 @@ Vue.use(Vuex)
 
 // vuex3-声明store对象
 export default new Vuex.Store({
-  strict: process.env.NODE_ENV != 'production', // 严格模式：防止直接修改state
+  strict: process.env.NODE_ENV !== 'production', // 严格模式：防止直接修改state
   state: { // 核心：数据
     a: 12,
     b: 5,

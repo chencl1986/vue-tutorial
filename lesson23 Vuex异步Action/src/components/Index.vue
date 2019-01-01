@@ -7,6 +7,17 @@
     <div>count from computed: {{countFromComputedSet}}</div>
     <div>count: {{count}}</div>
     <input type="button" value="count+5" @click="addCount(5)" />
+    <input type="button" value="a+5" @click="addA(5)" />
+    <input type="button" value="b+3" @click="addB(3)" />
+    <br>
+
+    <input type="button" value="张三出现" @click="setOnline(5)" />
+    <ul>
+      <li :key="user.name" v-for="user in onlineUsers">
+        名字：{{user.name}}
+        年龄：{{user.age}}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -22,21 +33,25 @@ export default {
       
     }
   },
+  async created(){
+    await this.readUsers();
+  },
   methods: {
+    // addA(n) {
+    //   this.$store.dispatch('addA', n)
+    // },
+    // addB(n) {
+    //   this.$store.dispatch('addA', n)
+    // },
     addCount(value) {
       this.countFromComputedSet += 5
     },
+    ...mapActions(['addA', 'addB', 'setOnline', 'readUsers']),
   },
   components: {
     Table, Cmp1
   },
   computed: {
-    a() {
-      return this.$store.state.a
-    },
-    b() {
-      return this.$store.state.b
-    },
     countFromComputed() {
       return this.$store.getters.count
     },
@@ -48,6 +63,8 @@ export default {
         this.$store.dispatch('addA', 5)
       },
     },
+    ...mapState(['a', 'b']),
+    ...mapGetters(['count', 'onlineUsers'])
   }
 }
 </script>

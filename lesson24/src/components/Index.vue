@@ -43,18 +43,22 @@ export default {
         {name: 'age', text: '年龄'},
       ],
       datas: [
-        {ID: 1, name: 'blue', age: 18},
+        {ID: 1, name: 'lee', age: 18},
         {ID: 2, name: '张三', age: 25},
-        {ID: 4, name: 'tom', age: 8},
+        {ID: 4, name: '李四', age: 8},
       ]
     }
   },
   async created(){
     await this.readUsers();
-
-    //this.setStr('sdfasdfsdg');
   },
   methods: {
+    // addA(n) {
+    //   this.$store.dispatch('addA', n)
+    // },
+    // addB(n) {
+    //   this.$store.dispatch('addA', n)
+    // },
     addCount(value) {
       this.countFromComputedSet += 5
     },
