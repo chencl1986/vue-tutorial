@@ -12,8 +12,12 @@
 
     <br>
     str: {{$store.state.str}}<br>
+    a_str: {{$store.state.mod_a.str}}<br>
+    b_str: {{$store.state.mod_b.str}}<br>
     a_str: {{str_a}}<br>
     b_str: {{str_b}}<br>
+    <input type="button" value="设置A" @click="setA('aa')">
+    <input type="button" value="设置B" @click="setB('bb')"><br/>
     <input type="button" value="设置A" @click="set_a('aaa')">
     <input type="button" value="设置B" @click="set_b('bbb')">
     <br>
@@ -37,16 +41,7 @@ export default {
   name: 'Index',
   data () {
     return {
-      fields: [
-        {name: 'ID', text: 'ID'},
-        {name: 'name', text: '姓名'},
-        {name: 'age', text: '年龄'},
-      ],
-      datas: [
-        {ID: 1, name: 'lee', age: 18},
-        {ID: 2, name: '张三', age: 25},
-        {ID: 4, name: '李四', age: 8},
-      ]
+      
     }
   },
   async created(){
@@ -62,15 +57,18 @@ export default {
     addCount(value) {
       this.countFromComputedSet += 5
     },
-    del(id){
-      this.datas=this.datas.filter(data=>data.ID!=id);
-    },
-    ...mapActions(['addA', 'addB', 'setOnline', 'readUsers']),
+    ...mapActions(['addA', 'addB', 'setOnline', 'readUsers', 'mod_a.setStr', 'mod_b.setStr']),
     //...mapActions(['setStr'])
     ...mapActions({
       set_a: 'mod_a.setStr',
       set_b: 'mod_b.setStr'
-    })
+    }),
+    setA(str) {
+      this['mod_a.setStr'](str)
+    },
+    setB(str) {
+      this['mod_b.setStr'](str)
+    },
     // set_a(){
     //   this.$store.dispatch('mod_a.setStr', 'aaa');
     // },
